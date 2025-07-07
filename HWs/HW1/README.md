@@ -1,10 +1,10 @@
-# 🧠 Deep Learning Homework 1: Image Manipulation with PyTorch
+# Deep Learning Homework 1: Image Classification with PyTorch
 
-This repository contains the first homework assignment for the Deep Learning course. The assignment is split into three parts, each focused on using **PyTorch** for low-level tensor manipulation, with an emphasis on working directly with raw image data.
+This repository contains the first homework assignment for the Deep Learning course. This assignment guides you through the full deep learning pipeline for image classification using PyTorch. You’ll start by implementing custom image augmentations, then train a shallow neural network, and finally explore how architectural and training choices affect model performance.
 
 ---
 
-## ✅ Part 1a: Batched Image Manipulation with PyTorch Tensors
+## Part 1a: Batched Image Manipulation with PyTorch Tensors
 
 ### Deliverables
 Implement all required functions in: `image_manipulation.py`
