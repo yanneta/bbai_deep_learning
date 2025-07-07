@@ -41,3 +41,12 @@ We’ve provided a test script:
 pytest test_image_manipulation.py
 ```
 
+### Part 1b: Training a Linear Classifier on Fashion-MNIST
+In this part, you'll build and train a simple image classifier using PyTorch on the Fashion-MNIST dataset, which contains grayscale images of clothing items. You'll implement a linear model (or shallow neural network) to classify images into 10 categories, while practicing model definition, training loops, evaluation, and performance measurement.
+
+
+### Deliverables
+Implement all required code in `image_classification_shallow.ipynb`. 
+
+
+
