@@ -1,6 +1,6 @@
 # Deep Learning Homework 1: Image Classification with PyTorch
 
-This repository contains the first homework assignment for the Deep Learning course. This assignment guides you through the full deep learning pipeline for image classification using PyTorch. You’ll start by implementing custom image augmentations, then train a shallow neural network, and finally explore how architectural and training choices affect model performance.
+This repository contains the first homework assignment for the Deep Learning course. In this assignment, you'll walk through the full deep learning pipeline for image classification using PyTorch—from implementing custom image augmentations, to training a shallow neural network, and finally experimenting with architectural and training variations to analyze their impact on performance.
 
 ---
 
