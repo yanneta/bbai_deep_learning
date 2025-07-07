@@ -1,5 +1,6 @@
 from image_manipulation import apply_brightness, apply_contrast, rgb_to_grayscale,  \
-        horizontal_flip, crop_center, add_black_border, numpy_to_torch_batch
+        horizontal_flip, crop_center, _crop_by_coords, random_crop, add_black_border, \
+        numpy_to_torch_batch
 import torch
 from torch.testing import assert_close
 import numpy as np
@@ -79,6 +80,26 @@ def test_crop_center():
     cropped = crop_center(image, 16, 16)
     assert cropped.shape == (3, 16, 16), f"Expected (3, 16, 16), got {cropped.shape}"
 
+def test_crop_by_coords_3d_basic():
+    img = torch.arange(3 * 5 * 5).reshape(3, 5, 5)
+    crop = _crop_by_coords(img, top=1, left=1, crop_height=3, crop_width=3)
+    expected = img[:, 1:4, 1:4]
+    assert crop.shape == (3, 3, 3)
+    assert torch.equal(crop, expected)
+
+def test_crop_by_coords_4d_basic():
+    batch = torch.arange(2 * 3 * 5 * 5).reshape(2, 3, 5, 5)
+    crop = _crop_by_coords(batch, top=2, left=0, crop_height=2, crop_width=3)
+    expected = batch[:, :, 2:4, 0:3]
+    assert crop.shape == (2, 3, 2, 3)
+    assert torch.equal(crop, expected)
+
+def test_crop_by_coords_edge_crop():
+    img = torch.arange(3 * 4 * 4).reshape(3, 4, 4)
+    crop = _crop_by_coords(img, top=3, left=2, crop_height=1, crop_width=2)
+    expected = img[:, 3:4, 2:4]
+    assert crop.shape == (3, 1, 2)
+    assert torch.equal(crop, expected)
 
 def test_add_black_border():
     # Test case 1: Single 3x3 RGB image with border=1
@@ -116,6 +137,15 @@ def test_add_black_border():
         assert result.device == torch.device('cuda')
         assert result.dtype == torch.float32
 
+def test_random_crop_output_shape_3d():
+    img = torch.randn(3, 64, 64)  # C, H, W
+    crop = random_crop(img, crop_height=32, crop_width=32)
+    assert crop.shape == (3, 32, 32)
+
+def test_random_crop_output_shape_4d():
+    batch = torch.randn(4, 3, 64, 64)  # N, C, H, W
+    crop = random_crop(batch, crop_height=32, crop_width=32)
+    assert crop.shape == (4, 3, 32, 32)
 
 def test_numpy_to_torch_batch():
     images = [np.random.rand(16, 16, 3).astype(np.float32) for _ in range(2)]
