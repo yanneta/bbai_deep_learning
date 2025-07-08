@@ -19,7 +19,7 @@ Train a 2-layer neural network with the following configuration:
 - Hidden layer size: `50`
 - Activation: ReLU
 - Optimizer: Adam
-- Epochs: 40
+- Epochs: 100
 
 Train separate models using the following learning rates:
 
@@ -41,7 +41,7 @@ Train models with the following hidden sizes:
 `[10, 50, 100, 300, 1000, 2000]`
 
 
-Train each model for **40 epochs** and report **validation accuracy** in a table.
+Train each model for **100 epochs** and report **validation accuracy** in a table.
 
 Additionally:
 
