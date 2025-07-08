@@ -108,7 +108,7 @@ def _crop_by_coords(image: torch.Tensor, top: int, left: int, crop_height: int, 
     pass  # Your code here
 
 
-def crop_center(image: torch.Tensor, crop_height: int, crop_width: int) -> torch.Tensor:
+def center_crop(image: torch.Tensor, crop_height: int, crop_width: int) -> torch.Tensor:
     """
     Crop the center region of an image.
 

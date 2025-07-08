@@ -1,5 +1,5 @@
 from image_manipulation import apply_brightness, apply_contrast, rgb_to_grayscale,  \
-        horizontal_flip, crop_center, _crop_by_coords, random_crop, add_black_border, \
+        horizontal_flip, center_crop, _crop_by_coords, random_crop, add_black_border, \
         numpy_to_torch_batch
 import torch
 from torch.testing import assert_close
@@ -72,12 +72,12 @@ def test_horizontal_flip():
     assert torch.allclose(image, double_flipped, atol=1e-6), "Double flip should return original"
     
 
-def test_crop_center():
+def test_center_crop():
     """Test center cropping function."""
     print("Testing crop_center...")
     image = create_test_image()  # 3x32x32
     
-    cropped = crop_center(image, 16, 16)
+    cropped = center_crop(image, 16, 16)
     assert cropped.shape == (3, 16, 16), f"Expected (3, 16, 16), got {cropped.shape}"
 
 def test_crop_by_coords_3d_basic():
