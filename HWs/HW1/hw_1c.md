@@ -81,3 +81,23 @@ Train a model for each augmentation level and report the training loss, validati
 - A **notebook** that runs all experiments and presents tables and plots. The notebook should include **minimal inline code**: most logic should be imported from `training_utils.py`.
 
 
+
+### Advice: Why You Should Clone the Data Before Augmentation
+In PyTorch, tensors are mutable. This means that if you apply an augmentation (like cropping or flipping) directly to your training data, you might accidentally modify the original data — permanently. This can lead to unexpected bugs, especially if you try to reuse the same data in future epochs or experiments.
+
+For example:
+```
+# This modifies X_train in-place if apply_augmentations does not clone internally
+X_train = apply_augmentations(X_train, level="moderate")
+```
+
+Later, if you try to reshape or augment X_train again assuming it's 28×28, it might already be cropped to 24×24 or 20×20 — causing shape errors like:
+
+```
+RuntimeError: shape '[-1, 1, 28, 28]' is invalid for input of size ...
+```
+
+To avoid this, always create a copy of the original training data before applying any augmentations:
+```
+X_train_aug = apply_augmentations(X_train.clone(), level=level)
+```
