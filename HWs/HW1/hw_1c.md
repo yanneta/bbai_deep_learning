@@ -34,7 +34,7 @@ Then, **interpolate between the best two values** by testing additional learning
 
 ### 3. Effect of Hidden Layer Size
 
-Fix the learning rate to the best value found above. Now investigate how the size of the hidden layer (`M`) affects model performance.
+Fix the learning rate to the best value found above. Now investigate how the size of the hidden layer affects model performance.
 
 Train models with the following hidden sizes:
 
@@ -46,7 +46,7 @@ Train each model for **10 epochs** and report **validation accuracy** in a table
 Additionally:
 
 - Compute **training and validation accuracy after each epoch**.
-- For the best value of `M`, generate a **plot** of training and validation accuracy versus the number of epochs.
+- For the best value of hidden layer, generate a **plot** of training and validation accuracy versus the number of epochs.
 
 ---
 
