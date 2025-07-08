@@ -16,7 +16,7 @@ Use the **first 10,000 examples** from the training set as your **validation set
 
 Train a 2-layer neural network with the following configuration:
 
-- Hidden layer size: `M = 50`
+- Hidden layer size: `50`
 - Activation: ReLU
 - Optimizer: Adam
 - Epochs: 10
