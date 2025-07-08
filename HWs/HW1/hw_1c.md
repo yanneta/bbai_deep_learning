@@ -19,16 +19,19 @@ Train a 2-layer neural network with the following configuration:
 - Hidden layer size: `50`
 - Activation: ReLU
 - Optimizer: Adam
-- Epochs: 100
+- Epochs: 500
 
 Train separate models using the following learning rates:
 
 `[1, 0.1, 0.01, 0.001, 0.0001, 0.00001]`
 
 
-For each setting, **reinitialize the model from scratch** (i.e., do not reuse weights). Report the **validation accuracy** for each learning rate in a table.
+For each setting, **reinitialize the model from scratch** (i.e., do not reuse weights).
 
 Then, **interpolate between the best two values** by testing additional learning rates (e.g., 0.005, 0.002, etc.) to identify the optimal learning rate.
+
+Train each model for 500 epochs and report the training loss, validation loss, and validation accuracy as a function of learning rate in a table.
+
 
 ---
 
@@ -40,17 +43,16 @@ Train models with the following hidden sizes:
 
 `[10, 50, 100, 300, 1000, 2000]`
 
+Train each model for 500 epochs and report the training loss, validation loss, and validation accuracy as a function of hidden size in a table.
 
-Train each model for **100 epochs** and report **validation accuracy** in a table.
+---
+### 4. Visualize transformed images
 
-Additionally:
-
-- Compute **training and validation accuracy after each epoch**.
-- For the best value of hidden layer, generate a **plot** of training and validation accuracy versus the number of epochs.
+Pick a set of transformations (e.g., random crop, flip, moderate brightness/contrast) and visualize four images along with their transformed versions.
 
 ---
 
-### 4. Effect of Data Augmentation
+### 5. Effect of Data Augmentation
 
 In this section, you will explore how **data augmentation** affects model performance using the functions you implemented earlier.
 
@@ -65,7 +67,7 @@ Design a set of **augmentation pipelines**, each applying a different combinatio
 
 You may use or modify the `apply_augmentations` function from `training_utils.py`. Use `apply_augmentations_val` to ensure that validation images are cropped to the same size as training images (if applicable).
 
-Train a model for each augmentation level and report the **validation accuracy** in a table.
+Train a model for each augmentation level and report the training loss, validation loss, and validation accuracy as a function of transformation level in a table.
 
 ---
 
