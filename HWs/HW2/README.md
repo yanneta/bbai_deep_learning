@@ -14,7 +14,8 @@ Follow the steps below to build your NER pipeline. Each step corresponds to a fu
 
 Implement a function `build_vocab`, `build_label_mapping`, `encode_dataset()` that:
 - `build_vocab` computes `word_to_ix` dictionary
-- `build_label_mapping` returns label_to_ix
+- `build_label_mapping` returns `label_to_ix`
+
 `encode_dataset()`:
 - Converts tokens to indices using a vocabulary
 - Converts NER labels to integers
