@@ -30,7 +30,7 @@ def build_label_mapping(labels):
 def encode_dataset(sentences, labels, word_to_ix, label_to_ix):
 ```
 
-Note: the `word_to_ix` is built with the training data.
+Note: the `word_to_ix` and `label_to_ix` are built with the training data.
 
 ### 2 Create Sliding Window Dataset
 
