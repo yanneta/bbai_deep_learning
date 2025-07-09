@@ -43,7 +43,7 @@ Implement a WindowDataset class that:
 
 - Assigns the label of the middle word as the target
 
-```
+```python
 class WindowDataset(torch.utils.data.Dataset):
     def __init__(self, encoded_words, encoded_labels, window_size=5):
         ...
@@ -60,7 +60,7 @@ Implement a simple feedforward neural network with the following structure:
 
 - Output: number of NER classes
 
-```
+```python
 class WindowNERModel(nn.Module):
     def __init__(self, vocab_size, embedding_dim, hidden_dim, num_classes):
         ...
@@ -75,7 +75,7 @@ Split the data by using the last 50000 lines as validation and the rest as train
 
 Write training and validation functions:
 
-```
+```python
 def train_model(model, dataloader, optimizer, criterion, epochs):
     ...
 
