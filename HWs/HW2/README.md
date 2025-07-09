@@ -12,8 +12,8 @@ Follow the steps below to build your NER pipeline. Each step corresponds to a fu
 
 ### 1. Encode the Dataset
 
-Implement a function `build_vocab`, `build_label_mapping`, `encode_dataset()` that:
-- `build_vocab` computes `word_to_ix` dictionary
+Implement a function `build_vocab_mapping`, `build_label_mapping`, `encode_dataset()` that:
+- `build_vocab_mapping` computes `word_to_ix` dictionary
 - `build_label_mapping` returns `label_to_ix`
 
 `encode_dataset()`:
@@ -22,16 +22,16 @@ Implement a function `build_vocab`, `build_label_mapping`, `encode_dataset()` th
 
 ```python
 
-def build_vocab(words):
+def build_vocab_mapping(words):
 
 
 def build_label_mapping(labels):
 
 
-def encode_dataset(sentences, labels, word_to_ix, label_to_ix):
+def encode_dataset(words, labels, word_to_ix, label_to_ix):
 ```
 
-Note: the `word_to_ix` and `label_to_ix` are built with the training data.
+Note: the `word_to_ix` and `label_to_ix` are built with the training data. Use the last 50000 lines as validation and the rest as training.
 
 ### 2 Create Sliding Window Dataset
 
@@ -45,7 +45,7 @@ Implement a WindowDataset class that:
 
 ```
 class WindowDataset(torch.utils.data.Dataset):
-    def __init__(self, encoded_sentences, encoded_labels, window_size=5):
+    def __init__(self, encoded_words, encoded_labels, window_size=5):
         ...
     def __getitem__(self, idx):
         return window, label
@@ -60,12 +60,14 @@ Implement a simple feedforward neural network with the following structure:
 
 - Output: number of NER classes
 
-
+```
 class WindowNERModel(nn.Module):
     def __init__(self, vocab_size, embedding_dim, hidden_dim, num_classes):
         ...
     def forward(self, x):
         ...
+
+```
 
 ### 4. Training and Evaluation
 Split the data by using the last 50000 lines as validation and the rest as training.
