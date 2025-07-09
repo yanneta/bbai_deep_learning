@@ -50,6 +50,7 @@ class WindowDataset(torch.utils.data.Dataset):
     def __getitem__(self, idx):
         return window, label
 ```
+Hint: make window a `np.array`.
 
 ### 3. Build the Model
 
@@ -67,7 +68,8 @@ This architecture allows the model to learn a contextual representation of the c
 
 ```python
 class WindowNERModel(nn.Module):
-    def __init__(self, vocab_size, embedding_dim, hidden_dim, num_classes):
+    def __init__(self, vocab_size, embedding_dim, hidden_dim, window_size, num_classes):
+        super().__init__()
         ...
     def forward(self, x):
         ...
