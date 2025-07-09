@@ -41,7 +41,7 @@ class WindowDataset(torch.utils.data.Dataset):
 ### 3. Build the Model
 Implement a simple feedforward neural network with the following structure:
 
-- Input: concatenated embeddings of the 5 words (window_size * embedding_dim)
+- Input: concatenated embeddings of the 5 words (`window_size * embedding_dim`)
 
 - Hidden layer: ReLU + optional dropout
 
@@ -94,9 +94,9 @@ For each experiment, include:
 A short reflection: What worked best? Why?
 
 ##  Deliverables
-ner_utils.py: functions and classes (encoding, dataset, model, training)
+`ner_utils.py`: functions and classes (encoding, dataset, model, training)
 
-ner_hw.ipynb: your notebook with experiments, results, and commentary
+`ner_experiments.ipynb`: your notebook with experiments, results, and commentary
 
 (Optional) plots/ folder with charts of accuracy/loss
 
