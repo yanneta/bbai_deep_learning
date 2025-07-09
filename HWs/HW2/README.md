@@ -12,11 +12,21 @@ Follow the steps below to build your NER pipeline. Each step corresponds to a fu
 
 ### 1. Encode the Dataset
 
-Implement a function `encode_dataset()` that:
+Implement a function `build_vocab`, `build_label_mapping`, `encode_dataset()` that:
+- `build_vocab` computes `word_to_ix` dictionary
+- `build_label_mapping` returns label_to_ix
+`encode_dataset()`:
 - Converts tokens to indices using a vocabulary
 - Converts NER labels to integers
 
 ```python
+
+def build_vocab(sentences):
+
+
+def build_label_mapping(labels):
+
+
 def encode_dataset(sentences, labels, word_to_ix, label_to_ix):
 ```
 
