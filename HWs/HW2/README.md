@@ -44,8 +44,9 @@ Implement a WindowDataset class that:
 - Assigns the label of the middle word as the target
 
 ```python
-class WindowDataset(torch.utils.data.Dataset):
+class WindowDataset(Dataset):
     def __init__(self, encoded_words, encoded_labels, window_size=5):
+        super().__init__()
         ...
     def __getitem__(self, idx):
         return window, label
@@ -83,7 +84,7 @@ Split the data by using the last 50000 lines as validation and the rest as train
 Write training and validation functions:
 
 ```python
-def train_model(model, dataloader, optimizer, criterion, epochs):
+def train_model(model, dataloader, optimizer, epochs):
     ...
 
 def valid_metrics(model, dataloader):
