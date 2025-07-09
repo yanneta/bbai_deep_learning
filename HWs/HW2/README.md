@@ -52,13 +52,18 @@ class WindowDataset(torch.utils.data.Dataset):
 ```
 
 ### 3. Build the Model
+
 Implement a simple feedforward neural network with the following structure:
 
-- Input: concatenated embeddings of the 5 words (`window_size * embedding_dim`)
+- Embedding Layer: First, map each word index to a dense vector using `nn.Embedding`. The output will be of shape (batch_size, window_size, embedding_dim).
 
-- Hidden layer: ReLU + optional dropout
+- Concatenation: Flatten the embeddings into a single vector of shape (batch_size, window_size * embedding_dim).
 
-- Output: number of NER classes
+- Hidden Layer: A linear layer followed by a ReLU activation and optional dropout.
+
+- Output Layer: A final linear layer that outputs scores for each NER class.
+
+This architecture allows the model to learn a contextual representation of the center word using the surrounding words in the window.
 
 ```python
 class WindowNERModel(nn.Module):
