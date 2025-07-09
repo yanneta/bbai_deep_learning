@@ -21,7 +21,7 @@ Implement a function `build_vocab`, `build_label_mapping`, `encode_dataset()` th
 
 ```python
 
-def build_vocab(sentences):
+def build_vocab(words):
 
 
 def build_label_mapping(labels):
@@ -29,6 +29,8 @@ def build_label_mapping(labels):
 
 def encode_dataset(sentences, labels, word_to_ix, label_to_ix):
 ```
+
+Note: the `word_to_ix` is built with the training data.
 
 ### 2 Create Sliding Window Dataset
 
@@ -65,6 +67,9 @@ class WindowNERModel(nn.Module):
         ...
 
 ### 4. Training and Evaluation
+Split the data by using the last 50000 lines as validation and the rest as training.
+
+
 Write training and validation functions:
 
 ```
