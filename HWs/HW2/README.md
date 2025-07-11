@@ -77,7 +77,7 @@ class WindowNERModel(nn.Module):
 
 ```
 
-### 4. Write F1-macro scores
+### 4. Write a function that computes f1 scores
 
 Write a function `compute_f1_per_class` that computes the F1-score for each class given true and predicted labels.
 
@@ -110,7 +110,9 @@ def valid_metrics(model, dataloader):
 
 ```
 
-You should track **Training loss**,**Validation loss** and  **Validation accuracy**.
+You should track **Training loss**,**Validation loss**, **Validation accuracy** and **F1-macro**.
+
+F1-macro: is the mean of the f1-scores for every class computed in the function `compute_f1_per_class`.
 
 # Part 2: Experimentation
 
@@ -128,6 +130,16 @@ Unless otherwise specified, use the following as your baseline:
 - Window size: 5
 
 
+### Experiment 1: Embedding Dimension
+Train models with different embedding sizes (e.g., 50, 100, 200) and compare validation accuracy.
+
+### Experiment 2: Hidden Layer Size
+Try hidden layer sizes like 10, 30, 100, 300 and evaluate their effect.
+
+### Experiment 3: Window Size
+Try a different window sizes (e.g.,3, 5,  7 or 9 words) and see how it affects accuracy and f1-macro.
+
+## Reporting
 For all experiments produce a table that shows training loss, validation loss, validation accuracy and validation F1-macro.
 Here is a code that you can use an example:
 
@@ -138,28 +150,6 @@ print("|---------------|---------------|-----------------|----------------|-----
 for emb_dim, metric in zip(embedding_dims, metrics):
     loss, val_loss, acc, f1 = metric
     print(f"| {emb_dim:<13} | {loss:<13.4f} | {val_loss:<15.4f} | {acc:<15.2f} | {f1:<15.2f} |")
-```
-
-### Experiment 1: Embedding Dimension
-Train models with different embedding sizes (e.g., 50, 100, 200) and compare validation accuracy.
-
-### Experiment 2: Hidden Layer Size
-Try hidden layer sizes like 10, 30, 100, 300 and evaluate their effect.
-
-### Experiment 3: Dropout
-Add dropout after the hidden layer and test values like 0.0, 0.2, 0.5.
-
-### Experiment 4: Window Size
-Try a larger window (e.g., 7 or 9 words) and see how it affects accuracy.
-
-## Reporting
-For each experiment, include:
-
-- A short table of hyperparameters and validation accuracy
-
-- One plot showing validation accuracy over epochs
-
-A short reflection: What worked best? Why?
 
 ##  Deliverables
 `ner_utils.py`: functions and classes (encoding, dataset, model, training)
