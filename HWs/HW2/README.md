@@ -92,17 +92,27 @@ def valid_metrics(model, dataloader):
 
 ```
 
-You should track **Training loss**, **Validation accuracy**.
+You should track **Training loss**,**Validation loss** and  **Validation accuracy**.
 
 # Part 2: Experimentation
 
 Now that your model works, explore how different settings affect performance.
 
+**Baseline Configuration**:
+Unless otherwise specified, use the following as your baseline:
+- Epocs: 10 
+- Learning rate: 0.001
+- Embedding dimension: 50
+- Hidden layer size: 30
+- Dropout: 0.0
+- Window size: 5
+
+
 ### Experiment 1: Embedding Dimension
 Train models with different embedding sizes (e.g., 50, 100, 200) and compare validation accuracy.
 
 ### Experiment 2: Hidden Layer Size
-Try hidden layer sizes like 64, 128, 256 and evaluate their effect.
+Try hidden layer sizes like 30, 60, 120, 240 and evaluate their effect.
 
 ### Experiment 3: Dropout
 Add dropout after the hidden layer and test values like 0.0, 0.2, 0.5.
