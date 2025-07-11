@@ -77,8 +77,26 @@ class WindowNERModel(nn.Module):
 
 ```
 
-### 4. Training and Evaluation
+### 4. Write F1-macro scores
+
+Write a function `compute_f1_per_class` that computes the F1-score for each class given true and predicted labels.
+
+For every class compute:
+
+F1-score formula:
+F1 = 2 · (Precision · Recall) / (Precision + Recall)
+
+To compute it:
+
+Precision for class k = correctly predicted k / total predicted as k
+
+Recall for class k = correctly predicted k / total ground truth k
+
+
+
+### 5. Training and Evaluation
 Split the data by using the last 50000 lines as validation and the rest as training.
+
 
 
 Write training and validation functions:
@@ -98,6 +116,8 @@ You should track **Training loss**,**Validation loss** and  **Validation accurac
 
 Now that your model works, explore how different settings affect performance.
 
+
+
 **Baseline Configuration**:
 Unless otherwise specified, use the following as your baseline:
 - Epocs: 10 
@@ -108,11 +128,23 @@ Unless otherwise specified, use the following as your baseline:
 - Window size: 5
 
 
+For all experiments produce a table that shows training loss, validation loss, validation accuracy and validation F1-macro.
+Here is a code that you can use an example:
+
+```python
+print("| Emb Dimension | Training Loss | Validation Loss | Validation Acc | F1-macro |")
+print("|---------------|---------------|-----------------|----------------|----------|")
+
+for emb_dim, metric in zip(embedding_dims, metrics):
+    loss, val_loss, acc, f1 = metric
+    print(f"| {emb_dim:<13} | {loss:<13.4f} | {val_loss:<15.4f} | {acc:<15.2f} | {f1:<15.2f} |")
+```
+
 ### Experiment 1: Embedding Dimension
 Train models with different embedding sizes (e.g., 50, 100, 200) and compare validation accuracy.
 
 ### Experiment 2: Hidden Layer Size
-Try hidden layer sizes like 30, 60, 120, 240 and evaluate their effect.
+Try hidden layer sizes like 10, 30, 100, 300 and evaluate their effect.
 
 ### Experiment 3: Dropout
 Add dropout after the hidden layer and test values like 0.0, 0.2, 0.5.
