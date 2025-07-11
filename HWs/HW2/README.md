@@ -61,7 +61,7 @@ Implement a simple feedforward neural network with the following structure:
 
 - Concatenation: Flatten the embeddings into a single vector of shape (batch_size, window_size * embedding_dim).
 
-- Hidden Layer: A linear layer followed by a ReLU activation and optional dropout.
+- Hidden Layer: A linear layer followed by a ReLU activation.
 
 - Output Layer: A final linear layer that outputs scores for each NER class.
 
@@ -126,7 +126,6 @@ Unless otherwise specified, use the following as your baseline:
 - Learning rate: 0.001
 - Embedding dimension: 50
 - Hidden layer size: 30
-- Dropout: 0.0
 - Window size: 5
 
 
