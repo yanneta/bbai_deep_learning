@@ -114,7 +114,7 @@ You should track **Training loss**,**Validation loss**, **Validation accuracy** 
 
 F1-macro: is the mean of the f1-scores for every class computed in the function `compute_f1_per_class`.
 
-# Part 2: Experimentation
+## Part 2: Experimentation
 
 Now that your model works, explore how different settings affect performance.
 
