@@ -155,6 +155,39 @@ for emb_dim, metric in zip(embedding_dims, metrics):
 
 `ner_experiments.ipynb`: your notebook with experiments, results, and commentary
 
-(Optional) plots/ folder with charts of accuracy/loss
+## Part 3: Error Analysis (Optional but Recommended)
+After training your best model, take a closer look at where it makes mistakes. This will help you better understand its behavior and common failure cases.
 
+1. Confusion Matrix
+Use sklearn.metrics.confusion_matrix to visualize which NER classes are most often confused.
+
+Example:
+
+```python
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+cm = confusion_matrix(y_true, y_pred, labels=list(range(num_classes)))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
+plt.xlabel("Predicted")
+plt.ylabel("True")
+plt.title("Confusion Matrix")
+plt.show()
+```
+2. Per-Class F1 Breakdown
+Use the `compute_f1_per_class` function to identify which classes have low F1.
+
+Ask yourself:
+
+- Are certain entity types consistently misclassified?
+
+- Are there imbalanced classes the model struggles with?
+
+3. Qualitative Examples
+Pick a few examples where the model makes mistakes (e.g., confusing proteins with DNA).
+
+- Print the 5-word window, the true label, and the predicted label.
+
+- This helps uncover patterns the model might be missing due to limited context, rare words, or ambiguous phrasing.
 
