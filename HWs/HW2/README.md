@@ -149,11 +149,12 @@ print("|---------------|---------------|-----------------|----------------|-----
 for emb_dim, metric in zip(embedding_dims, metrics):
     loss, val_loss, acc, f1 = metric
     print(f"| {emb_dim:<13} | {loss:<13.4f} | {val_loss:<15.4f} | {acc:<15.2f} | {f1:<15.2f} |")
-
-##  Deliverables
+```
+###  Deliverables
 `ner_utils.py`: functions and classes (encoding, dataset, model, training)
 
 `ner_experiments.ipynb`: your notebook with experiments, results, and commentary
+
 
 ## Part 3: Error Analysis (Optional but Recommended)
 After training your best model, take a closer look at where it makes mistakes. This will help you better understand its behavior and common failure cases.
