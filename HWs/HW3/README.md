@@ -26,3 +26,22 @@ On CPU this should complete in just a few minutes. On GPU it’s faster.
 
 ---
 
+## Part 3b: Transfer Learning on Oxford Flowers 102
+
+In this lab, you will use a **pretrained MobileNetV2** model and fine-tune it to classify flower species from the **Oxford 102 Flowers** dataset.
+
+---
+
+## Dataset
+
+Use the built-in dataset:
+
+```python
+from torchvision.datasets import Flowers102
+
+* Use at least 600 images for training and 300 for testing.
+* Here is a link that might be useful: https://dev.to/hyperkai/flowers102-in-pytorch-4l71
+* Replace the final classifier layer so the model outputs 102 classes.
+* Achieve around 90% validation accuracy.
+* Show 5 example predictions (some correct and some incorrect).
+* Experiment with augmentations not seen in class. (in my notebook)
