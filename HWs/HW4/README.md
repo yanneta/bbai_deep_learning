@@ -7,10 +7,9 @@ This assignment introduces you to recommender systems built on **implicit feedba
 
 ---
 
-## Learning Objectives
+## Objectives
 By the end of Part 1, you will be able to:
 
-- Understand the difference between explicit and implicit feedback.
 - Clean and preprocess real-world interaction logs.
 - Build a **user–item interaction history** suitable for recommender systems.
 - Construct a **train/test split** appropriate for sequential implicit data.
