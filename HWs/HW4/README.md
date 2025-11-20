@@ -223,6 +223,7 @@ label = 0 for sampled negative items
 ## Preprocesing
 Reindex Users and Items for the use of embeddings.
 
+## Model
 You will train a simple matrix factorization model using learned user and item embeddings.
 
 ```
