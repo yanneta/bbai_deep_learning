@@ -155,7 +155,7 @@ def recall_at_k(recommended_items, true_item, k):
 ## 5. What You Must Submit
 Your Part 1 submission includes:
 
-### ✔ Code (Jupyter Notebook)
+### Code (Jupyter Notebook)
 - Preprocessing steps
 - Train/test construction
 - Baseline models
