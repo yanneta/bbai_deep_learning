@@ -91,16 +91,3 @@ Train a model for each augmentation level and report the training loss, validati
   - Any augmentation functions
 
 - A **notebook** that runs all experiments and presents tables and plots. The notebook should include **minimal inline code**: most logic should be imported from `training_utils.py`.
-
-
-
-### Advice: Clone Before Augmenting
-
-In PyTorch, tensors are mutable, and augmentation code can be a source of subtle bugs if you're not careful about which tensor you're modifying. As a defensive habit, always pass a clone of your training data into the augmentation function rather than the original:
-
-```
-# Good practice: leaves the original X_train untouched
-X_train_aug = apply_augmentations(X_train.clone(), level=level)
-```
-
-This way, if you experiment with different augmentation pipelines across cells, or rerun a cell out of order, you can always fall back to the original, unaugmented `X_train`.
