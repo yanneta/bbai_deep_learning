@@ -1,8 +1,20 @@
-## Hw 1c: Experimental Analysis of a Shallow Neural Network
+## Hw 1b: Experimental Analysis of a Shallow Neural Network
 
 Neural networks are powerful function approximators, but their performance depends heavily on the choice of architecture and training parameters. In this part of the assignment, you will systematically explore how different hyperparameters and training strategies impact the performance of a shallow neural network trained on the Fashion-MNIST dataset. These experiments will help you develop an intuition for model tuning and performance tradeoffs in real-world settings.
 
-We will use the **Adam** optimizer for all experiments. The dataset contains **grayscale 32×32 images** of clothing items, and your task is to classify each image into one of **10 categories**. You are encouraged to reuse and extend your code from **Part 1b**.
+We will use the **Adam** optimizer for all experiments. The dataset contains **grayscale 28×28 images** of clothing items, and your task is to classify each image into one of **10 categories**. You are encouraged to reuse and extend your code from **Part 1a**.
+
+---
+
+### 0. Complete `training_utils.py`
+
+Before starting the experiments below, complete the following functions in `training_utils.py`:
+
+- `get_model`: returns a freshly initialized 2-layer neural network.
+- `train_model`: trains a model for a given number of epochs and returns the final training loss.
+- `valid_metrics`: evaluates a trained model on a validation set and returns the validation loss and accuracy.
+
+All experiments in this assignment should call these functions rather than duplicating training/evaluation logic in the notebook.
 
 ---
 
@@ -61,11 +73,11 @@ Use the **best learning rate** and **best hidden size** from your previous exper
 Design a set of **augmentation pipelines**, each applying a different combination and intensity of augmentations. For example:
 
 - **Baseline**: no augmentations
-- **Mild**: horizontal flip, slight brightness/contrast adjustments
+- **Mild**: random crop, horizontal flip
 - **Moderate**: random crop, flip, moderate brightness/contrast
-- **Aggressive**: all of the above + black borders and stronger intensity
+- **Aggressive**: random crop, flip, stronger brightness/contrast, random rotation
 
-You may use or modify the `apply_augmentations` function from `training_utils.py`. Use `apply_augmentations_val` to ensure that validation images are cropped to the same size as training images (if applicable).
+You may use or modify the `apply_augmentations` function from `training_utils.py`. All augmentation levels crop-and-pad back to the original 28×28 size, so training and validation images stay the same shape throughout. Do **not** apply augmentation to validation or test images — evaluate them as-is.
 
 Train a model for each augmentation level and report the training loss, validation loss, and validation accuracy as a function of transformation level in a table.
 
@@ -82,22 +94,13 @@ Train a model for each augmentation level and report the training loss, validati
 
 
 
-### Advice: Why You Should Clone the Data Before Augmentation
-In PyTorch, tensors are mutable. This means that if you apply an augmentation (like cropping or flipping) directly to your training data, you might accidentally modify the original data — permanently. This can lead to unexpected bugs, especially if you try to reuse the same data in future epochs or experiments.
+### Advice: Clone Before Augmenting
 
-For example:
-```
-# This modifies X_train in-place if apply_augmentations does not clone internally
-X_train = apply_augmentations(X_train, level="moderate")
-```
-
-Later, if you try to reshape or augment X_train again assuming it's 28×28, it might already be cropped to 24×24 or 20×20 — causing shape errors like:
+In PyTorch, tensors are mutable, and augmentation code can be a source of subtle bugs if you're not careful about which tensor you're modifying. As a defensive habit, always pass a clone of your training data into the augmentation function rather than the original:
 
 ```
-RuntimeError: shape '[-1, 1, 28, 28]' is invalid for input of size ...
-```
-
-To avoid this, always create a copy of the original training data before applying any augmentations:
-```
+# Good practice: leaves the original X_train untouched
 X_train_aug = apply_augmentations(X_train.clone(), level=level)
 ```
+
+This way, if you experiment with different augmentation pipelines across cells, or rerun a cell out of order, you can always fall back to the original, unaugmented `X_train`.
