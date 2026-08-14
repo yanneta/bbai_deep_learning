@@ -17,5 +17,5 @@ Implement all required code in `image_classification_shallow.ipynb`.
 
 Neural networks are flexible function approximators, but their performance is highly sensitive to the choice of architecture and training parameters. In this part of the assignment, you will systematically study how different hyperparameters and training strategies affect the performance of a shallow neural network trained on the Fashion-MNIST dataset. Your experiments will help you understand practical model tuning and performance tradeoffs in real-world settings.
 
-Find the instructions for the assignment [here](hw_1c.md)
+Find the instructions for the assignment [here](hw_1b.md)
 
