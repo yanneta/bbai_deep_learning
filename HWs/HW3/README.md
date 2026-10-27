@@ -18,12 +18,6 @@
 ### Expected Runtime
 On CPU this should complete in just a few minutes. On GPU it’s faster.
 
-### Grading Rubric (10 pts)
-- (3 pts) Correct small CNN; shapes pass; param count shown.
-- (3 pts) Training loop works without errors; reasonable learning curve.
-- (2 pts) Test evaluation + confusion matrix.
-- (2 pts) Mini-Experiments answered with short justifications.
-
 ---
 
 ## Part 3b: Transfer Learning on Oxford Flowers 102
