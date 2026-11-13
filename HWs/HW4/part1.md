@@ -40,7 +40,7 @@ Your first goal is to build a clean interaction log.
 4. Create timestamp by `df["timestamp"] = df.groupby("user_id").cumcount()`
 5. Sort interactions by timestamp.
 
-**Advise:** Use `value_counts()` + boolean mask to filter. I first filtered by user and then by items. I get 209197 interactions.
+**Advise:** Use `value_counts()` + boolean mask to filter. I first filtered by user and then by items. I get 218221 interactions.
 
 ### Expected output
 
